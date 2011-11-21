@@ -1,5 +1,5 @@
 require 'devise_unix2_chkpwd_authenticatable/strategy'
-require 'session'
+require 'devise_unix2_chkpwd_authenticatable/session'
 
 module Devise
   module Models
@@ -21,7 +21,7 @@ module Devise
         Rails.logger.error "*** UNIX2_CHKPWD #{login.inspect}"
         
         cmd = "/sbin/unix2_chkpwd rpam '#{login}'"
-        session = Session.new
+        session = Devise::Models::Unix2ChkpwdAuthenticatable::Session.new
         result, err = session.execute cmd, :stdin => passwd
         ret = session.get_status.zero?
         session.close
