@@ -12,6 +12,12 @@ require 'thread'
 require 'yaml'
 require 'tempfile'
 
+module Devise
+  module Models
+    module Unix2ChkpwdAuthenticatable
+    end
+  end
+end  
 
 module Devise::Models::Unix2ChkpwdAuthenticatable::Session 
 #--{{{
