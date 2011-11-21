@@ -21,7 +21,7 @@ module Devise
         Rails.logger.error "*** UNIX2_CHKPWD #{login.inspect}"
         
         cmd = "/sbin/unix2_chkpwd passwd '#{login}'"
-        session = Devise::Models::Unix2ChkpwdAuthenticatable::Session.new
+        session = Session.new
         result, err = session.execute cmd, :stdin => passwd
         ret = session.get_status.zero?
         session.close

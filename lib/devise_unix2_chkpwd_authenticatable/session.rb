@@ -12,15 +12,8 @@ require 'thread'
 require 'yaml'
 require 'tempfile'
 
-module Devise
-  module Models
-    module Unix2ChkpwdAuthenticatable
-    end
-  end
-end  
+module Session 
 
-module Devise::Models::Unix2ChkpwdAuthenticatable::Session 
-#--{{{
   VERSION = '2.4.0'
 
   @track_history = ENV['SESSION_HISTORY'] || ENV['SESSION_TRACK_HISTORY']
