@@ -15,12 +15,12 @@ Gem::Specification.new do |s|
     'README.rdoc',
     #'Rakefile',
     #'VERSION',
-    'devise_pam_authenticatable.gemspec',
-    'lib/devise_pam_authenticatable.rb',
-    'lib/devise_pam_authenticatable/model.rb',
-    #'lib/devise_pam_authenticatable/pam_adapter.rb',
-    'lib/devise_pam_authenticatable/routes.rb',
-    'lib/devise_pam_authenticatable/strategy.rb',
+    'devise_unix2_chkpwd_authenticatable.gemspec',
+    'lib/devise_unix2_chkpwd_authenticatable.rb',
+    'lib/devise_unix2_chkpwd_authenticatable/model.rb',
+    #'lib/devise_unix2_chkpwdm_authenticatable/pam_adapter.rb',
+    'lib/devise_unix2_chkpwd_authenticatable/routes.rb',
+    'lib/devise_unix2_chkpwd_authenticatable/strategy.rb',
     'rails/init.rb'
   ]
   s.homepage = 'http://github.com/dmacvicar/devise_unix2_chkpwd_authenticatable'
