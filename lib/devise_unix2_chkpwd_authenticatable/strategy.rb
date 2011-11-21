@@ -9,7 +9,7 @@ module Devise
       end
 
       def authenticate!
-        if resource = mapping.to.authenticate_with_unix(params[scope])
+        if resource = mapping.to.authenticate_with_unix2_chkpwd(params[scope])
           Rails.logger.error "*** Success!"
           success!(resource)
         else
