@@ -31,7 +31,7 @@ module Devise
 
       module ClassMethods
     
-        def authenticate_with_unix(attributes={})
+        def authenticate_with_unix2_chkpwd(attributes={})
          Rails.logger.error "*** Authenticate with UNIX2_CHKPWD #{attributes.inspect}"
          return nil unless attributes[:username].present?
 

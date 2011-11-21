@@ -5,7 +5,9 @@ module Devise
     class Unix2ChkpwdAuthenticatable < Base
 
       def valid?
-        valid_params? && mapping.to.respond_to?(:authenticate_with_unix2_chkpwd)
+        valid = valid_params? && mapping.to.respond_to?(:authenticate_with_unix2_chkpwd)
+        Rails.logger.debug "valid?: #{valid}"
+        valid
       end
 
       def authenticate!
