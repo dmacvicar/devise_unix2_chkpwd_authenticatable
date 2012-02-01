@@ -1,5 +1,5 @@
 require 'devise_unix2_chkpwd_authenticatable/strategy'
-require 'devise_unix2_chkpwd_authenticatable/session'
+require 'session'
 
 module Devise
   module Models
