@@ -2,9 +2,9 @@
 
 Gem::Specification.new do |s|
   s.name = 'devise_unix2_chkpwd_authenticatable'
-  s.version = "0.1"
+  s.version = "0.2"
   s.authors = ['Vladislav Lewin']
-  s.date = '2011-01-13'
+  s.date = '2011-02-01'
   s.description = 'For authenticating against PAM (Pluggable Authentication Modules)'
   s.email = 'vlewin@suse.de'
   s.extra_rdoc_files = [
@@ -18,7 +18,6 @@ Gem::Specification.new do |s|
     'devise_unix2_chkpwd_authenticatable.gemspec',
     'lib/devise_unix2_chkpwd_authenticatable.rb',
     'lib/devise_unix2_chkpwd_authenticatable/model.rb',
-    #'lib/devise_unix2_chkpwdm_authenticatable/pam_adapter.rb',
     'lib/devise_unix2_chkpwd_authenticatable/routes.rb',
     'lib/devise_unix2_chkpwd_authenticatable/strategy.rb',
     'rails/init.rb'
@@ -29,6 +28,7 @@ Gem::Specification.new do |s|
   s.summary = 'Devise PAM authentication module using unix2_chkpwd'
 
   s.add_runtime_dependency('devise', ["> 1.1.0"])
+  s.add_runtime_dependency('session', ["> 2.4.0"])
 
 end
 
