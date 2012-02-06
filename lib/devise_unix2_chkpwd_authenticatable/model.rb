@@ -1,5 +1,5 @@
 require 'devise_unix2_chkpwd_authenticatable/strategy'
-require 'session'
+require 'open3'
 
 module Devise
   module Models
@@ -19,13 +19,24 @@ module Devise
 
       def unix2_chkpwd(login, passwd)
         Rails.logger.info "*** UNIX2_CHKPWD: checking password for user #{login.inspect}"
-        
-        cmd = "/sbin/unix2_chkpwd passwd '#{escape_quotes login}'"
-        session = Session.new
-        result, err = session.execute cmd, :stdin => passwd
-        ret = session.get_status.zero?
-        session.close
-        ret
+
+        # open3 does not return the exit status correctly
+        # use echo to print it to stdout
+        cmd = "/sbin/unix2_chkpwd passwd '#{escape_quotes login}'; echo $?"
+
+        stdin, stdout, stderr = Open3.popen3(cmd)
+        stdin.write passwd
+        stdin.close
+
+        result = stdout.read
+        error = stderr.read
+
+        unless error.blank?
+          Rails.logger.error "*** UNIX2_CHKPWD: Password check failed: #{error}"
+          return false
+        end
+
+        return result == "0\n"
       end
 
       private
