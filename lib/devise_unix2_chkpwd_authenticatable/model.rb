@@ -20,7 +20,7 @@ module Devise
       def unix2_chkpwd(login, passwd)
         Rails.logger.info "*** UNIX2_CHKPWD: checking password for user #{login.inspect}"
         
-        cmd = "/sbin/unix2_chkpwd passwd '#{login}'"
+        cmd = "/sbin/unix2_chkpwd passwd '#{escape_quotes login}'"
         session = Session.new
         result, err = session.execute cmd, :stdin => passwd
         ret = session.get_status.zero?
@@ -28,6 +28,13 @@ module Devise
         ret
       end
 
+      private
+
+      def escape_quotes(cmd)
+        cmd.gsub /'/,"'\\\\''"
+      end
+
+      public
 
       module ClassMethods
     
