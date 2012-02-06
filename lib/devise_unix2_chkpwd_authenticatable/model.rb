@@ -18,7 +18,7 @@ module Devise
       end
 
       def unix2_chkpwd(login, passwd)
-        Rails.logger.error "*** UNIX2_CHKPWD #{login.inspect}"
+        Rails.logger.info "*** UNIX2_CHKPWD: checking password for user #{login.inspect}"
         
         cmd = "/sbin/unix2_chkpwd passwd '#{login}'"
         session = Session.new
@@ -32,7 +32,7 @@ module Devise
       module ClassMethods
     
         def authenticate_with_unix2_chkpwd(attributes={})
-         Rails.logger.error "*** Authenticate with UNIX2_CHKPWD #{attributes.inspect}"
+         Rails.logger.debug "*** Authenticate with UNIX2_CHKPWD, username: #{attributes[:username].inspect}"
          return nil unless attributes[:username].present?
 
          resource = scoped.where(:username => attributes[:username]).first
