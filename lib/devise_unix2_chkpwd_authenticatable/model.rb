@@ -18,7 +18,7 @@ module Devise
       end
 
       def unix2_chkpwd(login, passwd)
-        Rails.logger.error "*** UNIX2_CHKPWD #{login.inspect}"
+        Rails.logger.info "*** UNIX2_CHKPWD #{login.inspect}"
         return false if login.include? ?' #blacklist login with ' in name
 
         cmd = "/sbin/unix2_chkpwd passwd '#{login}'"
