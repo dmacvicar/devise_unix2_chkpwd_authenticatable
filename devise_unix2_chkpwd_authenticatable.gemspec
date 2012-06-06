@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |s|
   s.name = 'devise_unix2_chkpwd_authenticatable'
-  s.version = "0.2"
+  s.version = "0.4"
   s.authors = ['Vladislav Lewin']
   s.date = '2011-02-01'
   s.description = 'For authenticating against PAM (Pluggable Authentication Modules)'
@@ -28,7 +28,6 @@ Gem::Specification.new do |s|
   s.summary = 'Devise PAM authentication module using unix2_chkpwd'
 
   s.add_runtime_dependency('devise', ["> 1.1.0"])
-  s.add_runtime_dependency('session', ["> 2.4.0"])
 
 end
 
