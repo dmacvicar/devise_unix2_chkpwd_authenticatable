@@ -22,7 +22,7 @@ module Devise
         end
 
         if resource = mapping.to.authenticate_with_unix2_chkpwd(credentials)
-          Rails.logger.error "*** Success!"
+          Rails.logger.info "*** Success!"
           success!(resource)
         else
           Rails.logger.error "*** Invalid!"
