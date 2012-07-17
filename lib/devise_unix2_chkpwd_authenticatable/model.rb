@@ -30,7 +30,7 @@ module Devise
             stdin.write passwd
             stdin.close
             error = stderr.read
-            Rails.logger.error "*** UNIX2_CHKPWD: Password check failed: #{error}" if error
+            Rails.logger.error "*** UNIX2_CHKPWD: Password check failed: #{error}" unless error.empty?
             success = stdout.read == "0\n"
          end
         else
@@ -39,7 +39,7 @@ module Devise
             stdin.write passwd
             stdin.close
             error = stderr.read
-            Rails.logger.error "*** UNIX2_CHKPWD: Password check failed: #{error}" if error
+            Rails.logger.error "*** UNIX2_CHKPWD: Password check failed: #{error}" unless error.empty?
             success = wait_thr.value.exitstatus == 0
           end
         end
