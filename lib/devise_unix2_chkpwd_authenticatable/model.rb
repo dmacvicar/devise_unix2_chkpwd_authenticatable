@@ -18,7 +18,10 @@ module Devise
       end
 
       def unix2_chkpwd(login, passwd)
-        Rails.logger.info "*** UNIX2_CHKPWD: checking password for user #{login.inspect}"
+        # do not log authentication token when sent via HTTP Basic auth as user name
+        # see https://github.com/plataformatec/devise/blob/master/lib/devise/strategies/token_authenticatable.rb#L10
+        log_name = login && login.size == 20 && (passwd == "" || passwd == "X") ? "[FILTERED]" : login
+        Rails.logger.info "*** UNIX2_CHKPWD: checking password for user #{log_name.inspect}"
 
         success = nil
 

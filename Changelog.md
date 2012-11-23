@@ -1,3 +1,7 @@
+## 0.4.2
+
+  * do not log authentication token passed via user name in HTTP Basic authentication
+
 ## 0.4.1
 
   * added HTTP Basic authentication support
